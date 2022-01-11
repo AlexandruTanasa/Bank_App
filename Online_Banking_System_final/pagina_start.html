@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+    <title>Start Page</title>
+	
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">       
+    <link rel="stylesheet" href="font-awesome-4.6.3/css/font-awesome.min.css">            
+    <link rel="stylesheet" href="css/bootstrap.min.css">                                                              
+    <link rel="stylesheet" href="css/magnific-popup.css">                                 
+
+	
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+            color: #fff;
+        }
+        section{
+           
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("./img/bg-00.jpg");
+            height: 100vh;
+            width: 100%;
+            background-size: cover;
+            background-position: center center;
+        }
+        .form-container{
+			background: rgba(255,255,255,0.55);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 380px;
+            padding: 50px 30px;
+            box-shadow:7px 7px 60px #000;
+        }
+
+        .control input{
+            padding: 8px;
+            font-size: 16px;
+            display: block;
+            width: 100%;
+            color:#000000;
+            background: #ddd;
+            outline: none;
+            border: none;
+            margin: 1em 0;
+
+        }         
+        .control .btn{
+            color: #fff;
+            text-transform: uppercase;
+            background: crimson;
+            opacity: 1;
+            transition:opacity .3s ease;
+        }
+        .btn:focus{
+            opacity: 1;
+        }
+        p{
+            text-align: center;
+        }
+        a{
+            text-decoration: none;
+            color: #000000;
+            opacity: 1;
+        }
+        a:hover{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="form-container">
+        <form method="POST" action="login.php">
+            <div class="control">
+            <label style="color:#000000" for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+            </div>
+            <div class="control">
+            <label style="color:#000000" for="psw">Password</label>
+            <input type="password" id="psw" name="psw" required>
+            </div>
+          <!--  <span><input type="checkbox"> Remember me</span> -->
+            <div class="control">
+            <input type="submit" name="submit" class="btn" value="Login">
+            </div>
+        </form>
+        <p><a href="#" >Forget password ?</a></p>
+        </div>
+    </section>
+	  <div id="loader-wrapper">
+            
+            <div id="loader"></div>
+            <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+
+        </div>
+		
+        <script src="js/jquery-1.11.3.min.js"></script>         <!-- jQuery (https://jquery.com/download/) -->
+        <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>             <!-- Bootstrap js (v4-alpha.getbootstrap.com/) -->
+        <script src="js/jquery.magnific-popup.min.js"></script> <!-- Magnific popup (http://dimsemenov.com/plugins/magnific-popup/) -->
+        
+        <script>
+
+            function adjustHeightOfPage(pageNo) {
+               
+                var totalPageHeight = 15 + $('.cd-slider-nav').height()
+                                        + $(".cd-hero-slider li:nth-of-type(" + pageNo + ") .js-tm-page-content").height() + 160
+                                        + $('.tm-footer').height();
+
+                if(totalPageHeight > $(window).height()) 
+                {
+                    $('.cd-hero-slider').addClass('small-screen');
+                    $('.cd-hero-slider li:nth-of-type(' + pageNo + ')').css("min-height", totalPageHeight + "px");
+                }
+                else 
+                {
+                    $('.cd-hero-slider').removeClass('small-screen');
+                    $('.cd-hero-slider li:nth-of-type(' + pageNo + ')').css("min-height", "100%");
+                }
+
+            }
+
+            $(window).load(function(){
+
+                adjustHeightOfPage(1); 
+
+
+                $( window ).resize(function() {
+                    var currentPageNo = $(".cd-hero-slider li.selected .js-tm-page-content").data("page-no");
+                    adjustHeightOfPage( currentPageNo );
+                }); 
+                $('body').addClass('loaded');
+                           
+            });
+
+        </script> 
+</body>
+</html>
